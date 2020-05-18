@@ -19,14 +19,8 @@ namespace OOP2Library
         /// </summary>
         public string FirstName
         {
-            get
-            {
-                return _firstName;
-            }
-            set
-            {
-                _firstName = CheckRegister(value);
-            }
+            get => _firstName;
+            set => _firstName = CheckRegister(value);
         }
 
         /// <summary>
@@ -39,14 +33,8 @@ namespace OOP2Library
         /// </summary>
         public string LastName
         {
-            get
-            {
-                return _lastName;
-            }
-            set
-            {
-                _lastName = CheckRegister(value);
-            }
+            get => _lastName;
+            set => _lastName = CheckRegister(value);
         }
 
         /// <summary>
@@ -59,24 +47,20 @@ namespace OOP2Library
         /// </summary>
         public int Age
         {
-            get { return _age; }
+            get => _age; 
+            set => _age = AgeValidation(value); 
         }
 
         /// <summary>
         /// Свойство Пол
         /// </summary>
         public Gender Gender { get; set; }
-
+        #endregion
+        
         protected PersonBase(int age)
         {
-            _age = AgeValidation(age);
+            Age = AgeValidation(age);
         }
-        #endregion
-
-        /// <summary>
-        /// Объект рандом для работы в классе BasePerson
-        /// </summary>
-        private static Random _baseRandom = new Random();
 
         /// <summary>
         /// Генерация случайной персоны
@@ -85,10 +69,10 @@ namespace OOP2Library
         public void GetRandomPerson()
         {
             string[] maleFirstNames = new string[]
-{
+            {
                 "Андрей", "Алексей", "Артем", "Сергей",
                 "Максим", "Дмитрий", "Василий", "Александр"
-};
+            };
             string[] femaleFirstNames = new string[]
             {
                 "Анна", "Анастасия", "Мария", "Юлия",
@@ -100,20 +84,27 @@ namespace OOP2Library
                 "Гневко", "Жук", "Давидян", "Маргарян"
             };
             var random = new Random();
-            var addGender = Gender.Male;
+
             switch (random.Next(1, 3))
             {
                 case 1:
-                    addGender = Gender.Male;
+                    Gender = Gender.Male;
                     break;
                 case 2:
-                    addGender = Gender.Female;
+                    Gender = Gender.Female;
                     break;
             }
-            string firstNames =
-                addGender == Gender.Male
-                ? maleFirstNames[random.Next(maleFirstNames.Length)]
-                : femaleFirstNames[random.Next(femaleFirstNames.Length)];
+
+            if (Gender == Gender.Male)
+            {
+                FirstName = maleFirstNames
+                    [random.Next(maleFirstNames.Length)];
+            }
+            else
+            {
+                FirstName = femaleFirstNames
+                    [random.Next(femaleFirstNames.Length)];
+            }
 
             LastName = lastNames[random.Next(lastNames.Length)];
         }
@@ -150,10 +141,11 @@ namespace OOP2Library
                 }
             }
         }
+
         /// <summary>
-            /// Преобразвание в правильные регистры
-            /// </summary>
-            /// <returns>Возвращает строку в с правильными регистрами</returns>
+        /// Преобразвание в правильные регистры
+        /// </summary>
+        /// <returns>Возвращает строку в с правильными регистрами</returns>
         private string CheckRegister(string value)
         {
             CheckString(value);
@@ -175,12 +167,14 @@ namespace OOP2Library
             }
             return FirstLetterUp(value);
         }
+
         /// <summary>
         /// Получение информации о персоне
         /// </summary>
         /// <param name="optionalParameter">необходимость вывода дополнительных данных</param>
         /// <returns>информация о персоне</returns>
         public abstract string GetInfo(bool optionalParameter = true);
+
         protected abstract int AgeValidation(int value);
     }
 }

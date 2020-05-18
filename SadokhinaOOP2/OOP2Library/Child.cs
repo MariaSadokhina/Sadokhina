@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOP2Library
 {
     public class Child : PersonBase
     {
-        /// <summary>
-        /// Объект рандом для работы в классе Child
-        /// </summary>
-        private static Random _childRandom = new Random();
 
         /// <summary>
         /// Возраст
@@ -43,14 +35,8 @@ namespace OOP2Library
         /// </summary>
         public new int Age
         {
-            get
-            {
-                return _age;
-            }
-            private set
-            {
-                _age = AgeValidation(value);
-            }
+            get => _age;
+            private set => _age = AgeValidation(value);
         }
 
         /// <summary>
@@ -59,9 +45,11 @@ namespace OOP2Library
         /// <param name="age">Возраст</param>
         /// <param name="mother">Мать</param>
         /// <param name="father">Отец</param>
-        public Child(int age, string school, Adult mother, Adult father) : base(age)
+        public Child(int age, string school, Adult mother, Adult father)
+            : base(age)
         {
             GetRandomPerson();
+            Age = AgeValidation(age);
             School = school;
             Mother = mother;
             Father = father;
@@ -70,7 +58,7 @@ namespace OOP2Library
         /// <summary>
         /// Получение информации о ребенке
         /// </summary>
-        /// <param name="isShowingParents">Необходимость вывода информации о родителях</param>
+        /// <param name="isShowingParents">Информация о родителях</param>
         /// <returns>Информация о ребенке</returns>
         public override string GetInfo(bool isShowingParents = true)
         {
@@ -98,7 +86,8 @@ namespace OOP2Library
         static public Child GetRandomChild()
         {
             var random = new Random();
-            var child = new Child(GetAge(), GetSchoolName(), GetParent(Gender.Female), GetParent(Gender.Male))
+            var child = new Child(GetAge(), GetSchoolName(), 
+                GetParent(Gender.Female), GetParent(Gender.Male))
             {
                 School = GetSchoolName()
             };
@@ -136,9 +125,10 @@ namespace OOP2Library
         /// <returns>возраст</returns>
         protected override int AgeValidation(int value)
         {
-            if (value > MaxAge)
+            if (value >= MaxAge)
             {
-                throw new ArgumentException("Возраст ребенка должен быть не больше 18");
+                throw new ArgumentException($"Возраст ребенка должен " +
+                    $"быть не больше {MaxAge}");
             }
             return value;
         }

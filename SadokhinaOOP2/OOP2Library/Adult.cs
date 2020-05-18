@@ -26,22 +26,15 @@ namespace OOP2Library
         /// <summary>
         /// Паспортные данные
         /// </summary>
-        public string PassportData
-        { get; private set; }
+        public string PassportData { get; private set; }
 
         /// <summary>
         /// Возраст
         /// </summary>
         public new int Age
         {
-            get
-            {
-                return _age;
-            }
-            private set
-            {
-                _age = AgeValidation(value);
-            }
+            get => _age;
+            private set => _age = AgeValidation(value);
         }
 
         /// <summary>
@@ -72,9 +65,11 @@ namespace OOP2Library
         /// <param name="age">Возраст</param>
         /// <param name="workPlace">Место работы</param>
         /// <param name="maritalStatus">Семейное положение</param>
-        public Adult(int age, string passportData, string workPlace, MaritalStatus maritalStatus) : base(age)
+        public Adult(int age, string passportData, string workPlace,
+            MaritalStatus maritalStatus): base(age)
         {
             GetRandomPerson();
+            Age = AgeValidation(age);
             PassportData = passportData;
             WorkPlace = workPlace;
             MaritalStatus = maritalStatus;
@@ -111,7 +106,9 @@ namespace OOP2Library
         static public Adult GetRandomAdult()
         {
             var random = new Random();
-            var adult = new Adult(GetAge(), GetPassportData(), GetWorkPlace(), (MaritalStatus)_adultRandom.Next(0, 2));
+            var adult = new Adult(GetAge(), GetPassportData(), 
+                GetWorkPlace(), (MaritalStatus)_adultRandom.Next(0, 2));
+            
             if (adult.MaritalStatus == MaritalStatus.Married)
             {
                 adult.Partner = GetPartner();
@@ -121,7 +118,7 @@ namespace OOP2Library
             //Получение случайного возраста
             int GetAge()
             {
-                return random.Next(18, MaxAge + 1);
+                return random.Next(MinAge, MaxAge + 1);
             }
             //Получение случайного места работы
             string GetWorkPlace()
@@ -166,10 +163,10 @@ namespace OOP2Library
         {
             if (value < MinAge | value > MaxAge + 1)
             {
-                throw new ArgumentException($"Возраст взрослого должен быть между {MinAge} и {MaxAge}");
+                throw new ArgumentException($"Возраст взрослого " +
+                    $"должен быть между {MinAge} и {MaxAge}");
             }
             return value;
         }
-
     }
 }

@@ -5,35 +5,43 @@ namespace SadokhinaOOP2
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            PersonBaseList personList = new PersonBaseList();
-            Random mainRandom = new Random();
-            int counter = mainRandom.Next(1, 6);
-            for (int i = 0; i < counter; i++)
+            var personList = new PersonBaseList();
+            var random = new Random();
+            for (int i = 0; i < 10; i++)
             {
-                personList.AddPerson(Adult.GetRandomAdult());
+                if (random.Next(0, 10) < 5)
+                {
+                    personList.AddPerson(Adult.GetRandomAdult());
+                }
+                else
+                {
+                    personList.AddPerson(Child.GetRandomChild());
+                }
             }
-            for (int i = 0; i < 7 - counter; i++)
-            {
-                personList.AddPerson(Child.GetRandomChild());
-            }
+
             // Вывод списка персон в консоль
             for (int i = 0; i < personList.Lenght; i++)
             {
                 Console.WriteLine(personList.SearchByIndex(i).GetInfo());
             }
-            var unknownPerson = personList.SearchByIndex(4);
-            Console.WriteLine($"Найденая персона относится к типу:{unknownPerson.GetType().Name}");
+
+            var unknownPerson = personList.SearchByIndex(1);
+            Console.WriteLine($"Найденая персона относится к типу:" +
+                $"{unknownPerson.GetType().Name}");
             switch (unknownPerson)
             {
                 case Child child:
-                    Console.WriteLine($"Информация о ребенке:\n{child.GetInfo(true)}");
+                    Console.WriteLine($"Информация о ребенке:" +
+                        $"\n{child.GetInfo(true)}");
                     break;
 
                 case Adult adult:
-                    Console.WriteLine($"Информация о взрослом:\n {adult.GetInfo(true)}");
+                    Console.WriteLine($"Информация о взрослом:" +
+                        $"\n {adult.GetInfo(true)}");
                     break;
+
                 default:
                     throw new ArgumentException($"Нет такого типа " +
                         $"унаследованого от {nameof(PersonBase)}");
