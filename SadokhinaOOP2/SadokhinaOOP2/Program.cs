@@ -3,8 +3,16 @@ using OOP2Library;
 
 namespace SadokhinaOOP2
 {
+    //TODO: RSDN ok
+    /// <summary>
+    /// Основной класс программы
+    /// </summary>
     class Program
     {
+        //TODO: XML ok
+        /// <summary>
+        /// Тестирование программы
+        /// </summary>
         private static void Main()
         {
             var personList = new PersonBaseList();
@@ -13,11 +21,11 @@ namespace SadokhinaOOP2
             {
                 if (random.Next(0, 10) < 5)
                 {
-                    personList.AddPerson(Adult.GetRandomAdult());
+                    personList.AddPerson(RandomAdult.GetRandomAdult());
                 }
                 else
                 {
-                    personList.AddPerson(Child.GetRandomChild());
+                    personList.AddPerson(RandomChild.GetRandomChild());
                 }
             }
 
@@ -32,14 +40,17 @@ namespace SadokhinaOOP2
                 $"{unknownPerson.GetType().Name}");
             switch (unknownPerson)
             {
+                //TODO: Вызвать специфический для класса метод ok
                 case Child child:
                     Console.WriteLine($"Информация о ребенке:" +
                         $"\n{child.GetInfo(true)}");
+                    Console.WriteLine(child.SellHouse());
                     break;
 
                 case Adult adult:
                     Console.WriteLine($"Информация о взрослом:" +
                         $"\n {adult.GetInfo(true)}");
+                    Console.WriteLine(adult.SellHouse());
                     break;
 
                 default:

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace OOP2Library
 {
@@ -53,10 +51,9 @@ namespace OOP2Library
         public Adult Partner { get; set; }
 
         /// <summary>
-        /// Объект рандом для работы в классе Adult
+        /// Конструктор взрослый человек без параметров
         /// </summary>
-        private static Random _adultRandom = new Random();
-
+        public Adult() { }
 
         /// <summary>
         /// Конструктор взрослый человек
@@ -68,7 +65,7 @@ namespace OOP2Library
         public Adult(int age, string passportData, string workPlace,
             MaritalStatus maritalStatus): base(age)
         {
-            GetRandomPerson();
+            RandomPerson.GetRandomPerson(true);
             Age = AgeValidation(age);
             PassportData = passportData;
             WorkPlace = workPlace;
@@ -100,61 +97,6 @@ namespace OOP2Library
         }
 
         /// <summary>
-        /// Заполнение случайной информацией
-        /// </summary>
-        /// <returns>экземпляр класса с заполненными полями</returns>
-        static public Adult GetRandomAdult()
-        {
-            var random = new Random();
-            var adult = new Adult(GetAge(), GetPassportData(), 
-                GetWorkPlace(), (MaritalStatus)_adultRandom.Next(0, 2));
-            
-            if (adult.MaritalStatus == MaritalStatus.Married)
-            {
-                adult.Partner = GetPartner();
-            }
-            return adult;
-
-            //Получение случайного возраста
-            int GetAge()
-            {
-                return random.Next(MinAge, MaxAge + 1);
-            }
-            //Получение случайного места работы
-            string GetWorkPlace()
-            {
-                var workPlaceList = new List<string>()
-                {
-                    "Электроэнергетик", "IT-Специалсит",
-                    "Инженер-проектировщик", "Полицейский",
-                    "Врач", "Учитель"
-                };
-                return workPlaceList[random.Next(0, workPlaceList.Count)];
-            }
-            //Получение случайных паспортных данных
-            string GetPassportData()
-            {
-                return $"{random.Next(1000, 10000)} " +
-                    $"{random.Next(100000, 1000000)}";
-            }
-            // Получение партнера для взрослого
-            Adult GetPartner()
-            {
-                {
-                    var partner = new Adult(GetAge(), GetWorkPlace(),
-                        GetPassportData(), MaritalStatus.Married);
-                    while (partner.Gender == adult.Gender)
-                    {
-                        partner.GetRandomPerson();
-                    }
-                    partner.LastName = adult.LastName;
-                    partner.Partner = adult;
-                    return partner;
-                }
-            }
-        }
-
-        /// <summary>
         /// Проверка ввода возраста
         /// </summary>
         /// <param name="value">значение</param>
@@ -167,6 +109,15 @@ namespace OOP2Library
                     $"должен быть между {MinAge} и {MaxAge}");
             }
             return value;
+        }
+
+        /// <summary>
+        /// Продать дом
+        /// </summary>
+        /// <returns>Продает дом</returns>
+        public string SellHouse()
+        {
+            return $"{GetInfo()} продает дом.";
         }
     }
 }

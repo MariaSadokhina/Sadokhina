@@ -47,8 +47,8 @@ namespace OOP2Library
         /// </summary>
         public int Age
         {
-            get => _age; 
-            set => _age = AgeValidation(value); 
+            get => _age;
+            set => _age = AgeValidation(value);
         }
 
         /// <summary>
@@ -56,57 +56,39 @@ namespace OOP2Library
         /// </summary>
         public Gender Gender { get; set; }
         #endregion
-        
+
+        #region Конструктор класса Person
+
+        /// <summary>
+        /// Конструктор класса PersonBase без параметров
+        /// </summary>
+        public PersonBase() { }
+
+        /// <summary>
+        /// Конструктор класса PersonBase
+        /// </summary>
+        /// <param name="firstName">Имя</param>
+        /// <param name="lastName">Фамилия</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="gender">Пол</param>
+        public PersonBase(string firstName, string lastName, int age,
+            Gender gender)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age;
+            Gender = gender;
+        }
+        #endregion
+
+        //TODO: XML ok
+        /// <summary>
+        /// Человек
+        /// </summary>
+        /// <param name="age">Возраст</param>
         protected PersonBase(int age)
         {
             Age = AgeValidation(age);
-        }
-
-        /// <summary>
-        /// Генерация случайной персоны
-        /// </summary>
-        /// <returns>Новыю персону</returns>
-        public void GetRandomPerson()
-        {
-            string[] maleFirstNames = new string[]
-            {
-                "Андрей", "Алексей", "Артем", "Сергей",
-                "Максим", "Дмитрий", "Василий", "Александр"
-            };
-            string[] femaleFirstNames = new string[]
-            {
-                "Анна", "Анастасия", "Мария", "Юлия",
-                "Дарья", "Татьяна", "Виталина", "Елена"
-            };
-            string[] lastNames = new string[]
-            {
-                "Андрейченко", "Евтушенко", "Питько", "Фоменко",
-                "Гневко", "Жук", "Давидян", "Маргарян"
-            };
-            var random = new Random();
-
-            switch (random.Next(1, 3))
-            {
-                case 1:
-                    Gender = Gender.Male;
-                    break;
-                case 2:
-                    Gender = Gender.Female;
-                    break;
-            }
-
-            if (Gender == Gender.Male)
-            {
-                FirstName = maleFirstNames
-                    [random.Next(maleFirstNames.Length)];
-            }
-            else
-            {
-                FirstName = femaleFirstNames
-                    [random.Next(femaleFirstNames.Length)];
-            }
-
-            LastName = lastNames[random.Next(lastNames.Length)];
         }
 
         /// <summary>
@@ -125,7 +107,7 @@ namespace OOP2Library
                 var eng = new Regex(@"[A-z ]+[A-z- ]+");
                 var rus = new Regex(@"[А-я ]+[А-я- ]+");
                 var numbers = new Regex(@"[0-9]");
-                if ((eng.IsMatch(value) && rus.IsMatch(value)))
+                if (eng.IsMatch(value) && rus.IsMatch(value))
                 {
                     throw new ArgumentException("Имя/ Фамилия только на " +
                         "'Английском' или 'Русском' языке! Повторите: ");
@@ -146,7 +128,7 @@ namespace OOP2Library
         /// Преобразвание в правильные регистры
         /// </summary>
         /// <returns>Возвращает строку в с правильными регистрами</returns>
-        private string CheckRegister(string value)
+        public string CheckRegister(string value)
         {
             CheckString(value);
             string FirstLetterUp(string word)
@@ -175,6 +157,10 @@ namespace OOP2Library
         /// <returns>информация о персоне</returns>
         public abstract string GetInfo(bool optionalParameter = true);
 
+        //TODO: XML ok
+        /// <summary>
+        /// Проверка ввода возраста
+        /// </summary>
         protected abstract int AgeValidation(int value);
     }
 }

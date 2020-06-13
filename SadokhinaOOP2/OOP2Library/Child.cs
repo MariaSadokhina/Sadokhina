@@ -28,7 +28,7 @@ namespace OOP2Library
         /// <summary>
         /// Максимальный возраст ребенка
         /// </summary>
-        private const int MaxAge = 18;
+        public const int MaxAge = 18;
 
         /// <summary>
         /// Возраст
@@ -40,6 +40,11 @@ namespace OOP2Library
         }
 
         /// <summary>
+        /// Конструктор ребенка без параметров
+        /// </summary>
+        public Child() { }
+
+        /// <summary>
         /// Конструктор ребенка
         /// </summary>
         /// <param name="age">Возраст</param>
@@ -48,7 +53,7 @@ namespace OOP2Library
         public Child(int age, string school, Adult mother, Adult father)
             : base(age)
         {
-            GetRandomPerson();
+            RandomPerson.GetRandomPerson(false);
             Age = AgeValidation(age);
             School = school;
             Mother = mother;
@@ -80,45 +85,6 @@ namespace OOP2Library
         }
 
         /// <summary>
-        /// Заполнение информации о ребенке случайными значениями
-        /// </summary>
-        /// <returns>экземпляр класса с заполненными полями</returns>
-        static public Child GetRandomChild()
-        {
-            var random = new Random();
-            var child = new Child(GetAge(), GetSchoolName(), 
-                GetParent(Gender.Female), GetParent(Gender.Male))
-            {
-                School = GetSchoolName()
-            };
-            return child;
-
-            //Получение случайного возраста
-            int GetAge()
-            {
-                return random.Next(7, MaxAge);
-            }
-
-            //Получение название школы
-            string GetSchoolName()
-            {
-                var school = $"Школа №{random.Next(1, 999)}";
-                return school;
-            }
-
-            //Получение родителей ребенка
-            Adult GetParent(Gender gender)
-            {
-                var parent = Adult.GetRandomAdult();
-                while (parent.Gender != gender)
-                {
-                    parent = Adult.GetRandomAdult();
-                }
-                return parent;
-            }
-        }
-
-        /// <summary>
         /// Проверка ввода возраста
         /// </summary>
         /// <param name="value">возраст</param>
@@ -131,6 +97,16 @@ namespace OOP2Library
                     $"быть не больше {MaxAge}");
             }
             return value;
+        }
+
+        /// <summary>
+        /// Продать дом
+        /// </summary>
+        /// <returns>Не получится продать дом самостоятельно</returns>
+        public string SellHouse()
+        {
+            return $"{GetInfo()} не может продать дом самостоятельно, " +
+                $"так как ещё слишком молод.";
         }
     }
 }
