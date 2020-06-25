@@ -53,15 +53,17 @@ namespace OOP2Library
                 return $"{random.Next(1000, 10000)} " +
                     $"{random.Next(100000, 1000000)}";
             }
+            
             // Получение партнера для взрослого
             Adult GetPartner()
-            {
-                {
+            {            
+                { 
                     var partner = new Adult(GetAge(), GetWorkPlace(),
                         GetPassportData(), MaritalStatus.Married);
                     while (partner.Gender == adult.Gender)
                     {
-                        _ = RandomPerson.GetRandomPerson(true);
+                        partner = new Adult(GetAge(), GetWorkPlace(),
+                            GetPassportData(), MaritalStatus.Married);
                     }
                     partner.LastName = adult.LastName;
                     partner.Partner = adult;

@@ -65,7 +65,11 @@ namespace OOP2Library
         public Adult(int age, string passportData, string workPlace,
             MaritalStatus maritalStatus): base(age)
         {
-            RandomPerson.GetRandomPerson(true);
+            var person = RandomPerson.GetRandomPerson(true);
+
+            FirstName = person.FirstName;
+            LastName = person.LastName;
+            Gender = person.Gender;
             Age = AgeValidation(age);
             PassportData = passportData;
             WorkPlace = workPlace;

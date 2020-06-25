@@ -53,7 +53,11 @@ namespace OOP2Library
         public Child(int age, string school, Adult mother, Adult father)
             : base(age)
         {
-            RandomPerson.GetRandomPerson(false);
+            var person = RandomPerson.GetRandomPerson(false);
+
+            FirstName = person.FirstName;
+            LastName = person.LastName;
+            Gender = person.Gender;
             Age = AgeValidation(age);
             School = school;
             Mother = mother;

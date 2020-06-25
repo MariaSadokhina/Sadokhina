@@ -53,6 +53,7 @@ namespace OOP2Library
             PersonBase generatedPerson = isAdult ? new Adult() : (PersonBase)new Child();
             generatedPerson.FirstName = name;
             generatedPerson.LastName = lastNames[random.Next(lastNames.Length)];
+            generatedPerson.Gender = addGender;
 
             return generatedPerson;
         }
