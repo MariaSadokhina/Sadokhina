@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Text;
 using Figure;
 
 namespace SadokhinaOOP3
 {
+    //TODO: RSDN
     /// <summary>
     /// Основной класс программы
     /// </summary>
@@ -13,6 +15,7 @@ namespace SadokhinaOOP3
         /// </summary>
         static void Main()
         {
+            Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("Welcome!");
             Console.WriteLine("\nВыберите действие:\n");
 
@@ -29,12 +32,12 @@ namespace SadokhinaOOP3
                     {
                         //TODO: RSDN
                         case "1":
-                            {
-                                GetInfo(new Triangle
-                                    (GetCorrectDouble("Основание треугольника:"),
-                                    GetCorrectDouble("Высота треугольника:")));
-                                break;
-                            }
+                        {
+                            GetInfo(new Triangle
+                                (GetCorrectDouble("Основание треугольника:"),
+                                GetCorrectDouble("Высота треугольника:")));
+                            break;
+                        }
                         case "2":
                             {
                                 GetInfo(new Rectangle
