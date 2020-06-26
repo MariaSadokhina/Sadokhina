@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 namespace OOP2Library
 {
-    //TODO: Вынести в отдельный класс ok
-    //TODO: XML ok
+    //TODO: статический класс
     /// <summary>
     /// Генерация случайного взрослого
     /// </summary>

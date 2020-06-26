@@ -1,20 +1,20 @@
 ﻿using System;
+using System.Text;
 using OOP2Library;
 
 namespace SadokhinaOOP2
 {
-    //TODO: RSDN ok
     /// <summary>
     /// Основной класс программы
     /// </summary>
-    class Program
+    public class Program
     {
-        //TODO: XML ok
         /// <summary>
         /// Тестирование программы
         /// </summary>
         private static void Main()
         {
+            Console.OutputEncoding = Encoding.UTF8;
             var personList = new PersonBaseList();
             var random = new Random();
             for (int i = 0; i < 10; i++)
@@ -40,7 +40,6 @@ namespace SadokhinaOOP2
                 $"{unknownPerson.GetType().Name}");
             switch (unknownPerson)
             {
-                //TODO: Вызвать специфический для класса метод ok
                 case Child child:
                     Console.WriteLine($"Информация о ребенке:" +
                         $"\n{child.GetInfo(true)}");

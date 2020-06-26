@@ -4,12 +4,6 @@ namespace OOP2Library
 {
     public class Child : PersonBase
     {
-
-        /// <summary>
-        /// Возраст
-        /// </summary>
-        private int _age;
-
         /// <summary>
         /// Персона: Отец
         /// </summary>
@@ -30,24 +24,17 @@ namespace OOP2Library
         /// </summary>
         public const int MaxAge = 18;
 
-        /// <summary>
-        /// Возраст
-        /// </summary>
-        public new int Age
-        {
-            get => _age;
-            private set => _age = AgeValidation(value);
-        }
 
         /// <summary>
         /// Конструктор ребенка без параметров
         /// </summary>
-        public Child() { }
+        public Child() : base(0) { }
 
         /// <summary>
         /// Конструктор ребенка
         /// </summary>
         /// <param name="age">Возраст</param>
+        /// <param name="school">//TODO: ?</param>
         /// <param name="mother">Мать</param>
         /// <param name="father">Отец</param>
         public Child(int age, string school, Adult mother, Adult father)
@@ -58,7 +45,6 @@ namespace OOP2Library
             FirstName = person.FirstName;
             LastName = person.LastName;
             Gender = person.Gender;
-            Age = AgeValidation(age);
             School = school;
             Mother = mother;
             Father = father;

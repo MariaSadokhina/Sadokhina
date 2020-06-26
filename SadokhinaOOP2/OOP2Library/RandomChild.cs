@@ -2,8 +2,7 @@
 
 namespace OOP2Library
 {
-    //TODO: Вынести в отдельный класс ok
-    //TODO: XML ok
+    //TODO: статический класс
     /// <summary>
     /// Генерация случайного ребенка
     /// </summary>

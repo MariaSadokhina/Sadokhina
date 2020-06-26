@@ -15,26 +15,12 @@ namespace OOP2Library
         /// Максимальный возраст
         /// </summary>
         public const int MaxAge = 130;
-
-        /// <summary>
-        /// Возраст
-        /// </summary>
-        private int _age;
-
+        
         /// <summary>
         /// Паспортные данные
         /// </summary>
         public string PassportData { get; private set; }
-
-        /// <summary>
-        /// Возраст
-        /// </summary>
-        public new int Age
-        {
-            get => _age;
-            private set => _age = AgeValidation(value);
-        }
-
+        
         /// <summary>
         /// Место работы
         /// </summary>
@@ -53,7 +39,7 @@ namespace OOP2Library
         /// <summary>
         /// Конструктор взрослый человек без параметров
         /// </summary>
-        public Adult() { }
+        public Adult() : base(18) { }
 
         /// <summary>
         /// Конструктор взрослый человек
@@ -70,7 +56,6 @@ namespace OOP2Library
             FirstName = person.FirstName;
             LastName = person.LastName;
             Gender = person.Gender;
-            Age = AgeValidation(age);
             PassportData = passportData;
             WorkPlace = workPlace;
             MaritalStatus = maritalStatus;

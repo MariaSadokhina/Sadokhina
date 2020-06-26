@@ -57,38 +57,13 @@ namespace OOP2Library
         public Gender Gender { get; set; }
         #endregion
 
-        #region Конструктор класса Person
-
-        /// <summary>
-        /// Конструктор класса PersonBase без параметров
-        /// </summary>
-        public PersonBase() { }
-
-        /// <summary>
-        /// Конструктор класса PersonBase
-        /// </summary>
-        /// <param name="firstName">Имя</param>
-        /// <param name="lastName">Фамилия</param>
-        /// <param name="age">Возраст</param>
-        /// <param name="gender">Пол</param>
-        public PersonBase(string firstName, string lastName, int age,
-            Gender gender)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Age = age;
-            Gender = gender;
-        }
-        #endregion
-
-        //TODO: XML ok
         /// <summary>
         /// Человек
         /// </summary>
         /// <param name="age">Возраст</param>
         protected PersonBase(int age)
         {
-            Age = AgeValidation(age);
+            Age = age;
         }
 
         /// <summary>
@@ -157,7 +132,6 @@ namespace OOP2Library
         /// <returns>информация о персоне</returns>
         public abstract string GetInfo(bool optionalParameter = true);
 
-        //TODO: XML ok
         /// <summary>
         /// Проверка ввода возраста
         /// </summary>
