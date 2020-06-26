@@ -2,11 +2,11 @@
 
 namespace OOP2Library
 {
-    //TODO: статический класс
+    //TODO: статический класс ok
     /// <summary>
     /// Генерация случайного ребенка
     /// </summary>
-    public class RandomChild
+    public static class RandomChild
     {
         /// <summary>
         /// Заполнение информации о ребенке случайными значениями
@@ -17,7 +17,6 @@ namespace OOP2Library
             var random = new Random();
             var child = new Child(GetAge(), GetSchoolName(),
                 GetParent(Gender.Female), GetParent(Gender.Male))
-
             {
                 School = GetSchoolName()
             };

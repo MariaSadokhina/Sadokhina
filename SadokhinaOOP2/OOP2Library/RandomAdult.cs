@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace OOP2Library
 {
-    //TODO: статический класс
+    //TODO: статический класс ok
     /// <summary>
     /// Генерация случайного взрослого
     /// </summary>
-    public class RandomAdult
+    public static class RandomAdult
     {
         /// <summary>
         /// Объект рандом для работы в классе Adult
