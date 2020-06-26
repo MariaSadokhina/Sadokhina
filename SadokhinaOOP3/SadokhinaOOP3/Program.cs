@@ -4,16 +4,16 @@ using Figure;
 
 namespace SadokhinaOOP3
 {
-    //TODO: RSDN
+    //TODO: RSDN ok
     /// <summary>
     /// Основной класс программы
     /// </summary>
-    class Program
+    public class Program
     {
         /// <summary>
         /// Тестирование программы
         /// </summary>
-        static void Main()
+        private static void Main()
         {
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("Welcome!");
@@ -30,7 +30,7 @@ namespace SadokhinaOOP3
                     var keyMenu = Console.ReadLine();
                     switch (keyMenu)
                     {
-                        //TODO: RSDN
+                        //TODO: RSDN ok
                         case "1":
                         {
                             GetInfo(new Triangle
@@ -41,8 +41,10 @@ namespace SadokhinaOOP3
                         case "2":
                             {
                                 GetInfo(new Rectangle
-                                    (GetCorrectDouble("Высота прямоугольника:"),
-                                    GetCorrectDouble("Ширина прямоугольника:")));
+                                    (GetCorrectDouble("Высота " +
+                                    "прямоугольника:"),
+                                    GetCorrectDouble("Ширина " +
+                                    "прямоугольника:")));
                                 break;
                             }
                         case "3":
@@ -57,7 +59,8 @@ namespace SadokhinaOOP3
                                 break;
                             }
                         default:
-                            Console.WriteLine("Ошибка! Такого действия нет.");
+                            Console.WriteLine("Ошибка! " +
+                                "Такого действия нет.");
                             break;
                     }
                 }
@@ -71,18 +74,20 @@ namespace SadokhinaOOP3
         /// Проверка на наличие букв
         /// </summary>
         /// /// <returns>Проверенное введенное измерение</returns>
-        static double GetCorrectDouble(string message)
+        private static double GetCorrectDouble(string message)
         {
             while (true)
             {
                 try
                 {
                     Console.WriteLine(message);
-                    return Validation.MeasurementValidation(Convert.ToDouble(Console.ReadLine()));
+                    return Validation.MeasurementValidation
+                        (Convert.ToDouble(Console.ReadLine()));
                 }
                 catch
                 {
-                    Console.WriteLine("Ошибка! Введите неотрицательное число.");
+                    Console.WriteLine("Ошибка!" +
+                        " Введите неотрицательное число.");
                 }
             }
         }
@@ -90,7 +95,7 @@ namespace SadokhinaOOP3
         /// <summary>
         /// Вывод рассчитанной площади в консоль
         /// </summary>
-        static void GetInfo(FigureBase figureBase)
+        private static void GetInfo(FigureBase figureBase)
         {
             Console.WriteLine($"Площадь фигуры = {figureBase.Area}\n");
         }
