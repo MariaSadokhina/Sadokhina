@@ -5,6 +5,7 @@ namespace Model
     /// <summary>
     /// Класс описывающий прямоугольник
     /// </summary>
+    [Serializable]
     public class Rectangle : FigureBase
     {
         /// <summary>

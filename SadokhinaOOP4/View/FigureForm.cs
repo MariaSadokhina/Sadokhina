@@ -82,8 +82,10 @@ namespace View
         private void LoadData()
         {
             listViewType.Items.Clear();
-            ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(40, 40);
+            ImageList imageList = new ImageList
+            {
+                ImageSize = new Size(40, 40)
+            };
             imageList.Images.Add(new Bitmap(Properties.Resources.circle));
             imageList.Images.Add(new Bitmap(Properties.Resources.triangle));
             imageList.Images.Add(new Bitmap(Properties.Resources.rectangle));
@@ -92,8 +94,10 @@ namespace View
             listViewType.SmallImageList = imageList;
             for (int i = 0; i < 3; i++)
             {
-                ListViewItem listViewItem = new ListViewItem(new string[] { "" });
-                listViewItem.ImageIndex = i;
+                ListViewItem listViewItem = new ListViewItem(new string[] { "" })
+                {
+                    ImageIndex = i
+                };
                 listViewType.Items.Add(listViewItem);
             }
         }
@@ -242,8 +246,8 @@ namespace View
                 string path = Environment.GetFolderPath(
                     Environment.SpecialFolder.MyDocuments);
                 openFileDialog.InitialDirectory = path;
-                openFileDialog.Filter = "figure files " +
-                    "(*.fig)|*.fig|All files (*.*)|*.*";
+                openFileDialog.Filter = "Figure files" +
+                    " (*.fig)|*.fig|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.RestoreDirectory = true;
 
@@ -252,7 +256,7 @@ namespace View
                     var formatter = new BinaryFormatter();
                     var fileLoad = openFileDialog.FileName;
 
-                    if (Path.GetExtension(fileLoad) == ".figcalc")
+                    if (Path.GetExtension(fileLoad) == ".fig")
                     {
                         try
                         {
@@ -272,6 +276,7 @@ namespace View
                                 MessageBox.Show("File loaded!");
                             }
                         }
+
                         catch
                         {
                             MessageBox.Show("File is corrupted, unable to load!");

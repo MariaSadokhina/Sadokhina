@@ -5,6 +5,7 @@ namespace Model
     /// <summary>
     /// Класс описывающий треугольник
     /// </summary>
+    [Serializable]
     public class Triangle : FigureBase
     {
         /// <summary>

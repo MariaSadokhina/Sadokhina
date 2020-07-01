@@ -5,6 +5,7 @@ namespace Model
     /// <summary>
     /// Класс описывающий круг
     /// </summary>
+    [Serializable]
     public class Circle : FigureBase
     {
         /// <summary>
