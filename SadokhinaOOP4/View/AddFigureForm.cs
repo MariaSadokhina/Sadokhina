@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Model;
 
 namespace View
 {
@@ -16,9 +16,9 @@ namespace View
         private Dictionary<FigureType, string> _figureKey =
             new Dictionary<FigureType, string>
             {
-                [FigureType.Circle] = "Круг",
-                [FigureType.Triangle] = "Треугольник",
-                [FigureType.Rectangle] = "Прямоугольник",
+                [FigureType.Circle] = "Circle",
+                [FigureType.Triangle] = "Triangle",
+                [FigureType.Rectangle] = "Rectangle",
             };
 
         /// <summary>
@@ -53,12 +53,12 @@ namespace View
             {
                 maskedTextBox1.Enabled = true;
             }
-            if (comboBoxType.Text == _figureKey[FigureType.Triangle])
+            else if (comboBoxType.Text == _figureKey[FigureType.Triangle])
             {
                 maskedTextBox2.Enabled = true;
                 maskedTextBox3.Enabled = true;
             }
-            if (comboBoxType.Text == _figureKey[FigureType.Rectangle])
+            else if (comboBoxType.Text == _figureKey[FigureType.Rectangle])
             {
                 maskedTextBox2.Enabled = true;
                 maskedTextBox3.Enabled = true;
@@ -75,16 +75,12 @@ namespace View
             maskedTextBox1.Enabled = false;
             maskedTextBox2.Enabled = false;
             maskedTextBox3.Enabled = false;
+            
             if (comboBoxType.Text == _figureKey[FigureType.Circle])
             {
                 maskedTextBox1.Enabled = true;
             }
-            if (comboBoxType.Text == _figureKey[FigureType.Triangle])
-            {
-                maskedTextBox2.Enabled = true;
-                maskedTextBox3.Enabled = true;
-            }
-            if (comboBoxType.Text == _figureKey[FigureType.Rectangle])
+            else
             {
                 maskedTextBox2.Enabled = true;
                 maskedTextBox3.Enabled = true;
@@ -115,13 +111,19 @@ namespace View
                 {
                     figure = new Circle(GetCorrect(Convert.ToDouble, maskedTextBox1.Text));
                 }
+
                 if (comboBoxType.Text == _figureKey[FigureType.Triangle])
                 {
+                    label2.Text = "Triangle Base:";
+                    label3.Text = "Height:";
                     figure = new Triangle(GetCorrect(Convert.ToDouble, maskedTextBox2.Text),
                             GetCorrect(Convert.ToDouble, maskedTextBox3.Text));
                 }
+                
                 if (comboBoxType.Text == _figureKey[FigureType.Rectangle])
                 {
+                    label2.Text = "Width:";
+                    label3.Text = "Length:";
                     figure = new Rectangle(GetCorrect(Convert.ToDouble, maskedTextBox2.Text),
                             GetCorrect(Convert.ToDouble, maskedTextBox3.Text));
                 }
@@ -161,24 +163,31 @@ namespace View
         /// <param name="e"></param>		
         private void ButtonRandom_Click(object sender, EventArgs e)
         {
-            maskedTextBox1.Text = maskedTextBox2.Text = maskedTextBox3.Text = "";
+            maskedTextBox1.Text = maskedTextBox2.Text = maskedTextBox3.Text = " ";
             Random random = new Random();
             comboBoxType.SelectedIndex = random.Next(0, 3);
-            maskedTextBox1.Text = Convert.ToString(random.Next(0, 50));
+            
             if (comboBoxType.Text == _figureKey[FigureType.Circle])
             {
                 maskedTextBox1.Text = Convert.ToString(random.Next(1, 50));
             }
+
             if (comboBoxType.Text == _figureKey[FigureType.Triangle])
             {
+                label2.Text = "Triangle Base:";
+                label3.Text = "Height:";
                 maskedTextBox2.Text = Convert.ToString(random.Next(1, 50));
                 maskedTextBox3.Text = Convert.ToString(random.Next(1, 50));
             }
+
             if (comboBoxType.Text == _figureKey[FigureType.Rectangle])
             {
+                label2.Text = "Width:";
+                label3.Text = "Length:";
                 maskedTextBox2.Text = Convert.ToString(random.Next(1, 50));
                 maskedTextBox3.Text = Convert.ToString(random.Next(1, 50));
             }
         }
+
     }
 }

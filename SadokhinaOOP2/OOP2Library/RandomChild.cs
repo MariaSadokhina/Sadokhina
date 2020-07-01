@@ -2,7 +2,6 @@
 
 namespace OOP2Library
 {
-    //TODO: статический класс ok
     /// <summary>
     /// Генерация случайного ребенка
     /// </summary>

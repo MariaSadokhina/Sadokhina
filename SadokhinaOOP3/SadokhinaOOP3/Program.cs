@@ -4,7 +4,6 @@ using Figure;
 
 namespace SadokhinaOOP3
 {
-    //TODO: RSDN ok
     /// <summary>
     /// Основной класс программы
     /// </summary>
@@ -30,7 +29,6 @@ namespace SadokhinaOOP3
                     var keyMenu = Console.ReadLine();
                     switch (keyMenu)
                     {
-                        //TODO: RSDN ok
                         case "1":
                         {
                             GetInfo(new Triangle
@@ -39,25 +37,23 @@ namespace SadokhinaOOP3
                             break;
                         }
                         case "2":
-                            {
-                                GetInfo(new Rectangle
-                                    (GetCorrectDouble("Высота " +
-                                    "прямоугольника:"),
-                                    GetCorrectDouble("Ширина " +
+                        {
+                            GetInfo(new Rectangle(GetCorrectDouble("Высота прямоугольника:"), 
+                                GetCorrectDouble("Ширина " +
                                     "прямоугольника:")));
-                                break;
-                            }
+                            break;
+                        }
                         case "3":
-                            {
-                                GetInfo(new Circle
-                                    (GetCorrectDouble("Радиус круга:")));
-                                break;
-                            }
+                        {
+                            GetInfo(new Circle 
+                                (GetCorrectDouble("Радиус круга:")));
+                            break;
+                        }
                         case "4":
-                            {
-                                Environment.Exit(0);
-                                break;
-                            }
+                        {
+                            Environment.Exit(0);
+                            break;
+                        }
                         default:
                             Console.WriteLine("Ошибка! " +
                                 "Такого действия нет.");

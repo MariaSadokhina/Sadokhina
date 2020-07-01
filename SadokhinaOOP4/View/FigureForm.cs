@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using Model;
 using System.IO;
+using System.Drawing;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.ComponentModel;
 
 namespace View
 {
@@ -33,6 +36,7 @@ namespace View
         {
             InitializeComponent();
         }
+
         /// <summary>
         /// Загрузка формы
         /// </summary>
@@ -42,6 +46,7 @@ namespace View
         {
             var figureList = new List<FigureBase>();
             _figureList = figureList;
+            LoadData();
         }
 
         /// <summary>
@@ -49,7 +54,7 @@ namespace View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _listViewType_SelectedIndexChange(object sender, EventArgs e)
+        private void listViewType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listViewType.SelectedItems.Count >= 1)
             {
@@ -70,6 +75,30 @@ namespace View
                 }
             }
         }
+
+        /// <summary>
+        /// Загрузка картинок
+        /// </summary>
+        private void LoadData()
+        {
+            listViewType.Items.Clear();
+            ImageList imageList = new ImageList();
+            imageList.ImageSize = new Size(40, 40);
+            imageList.Images.Add(new Bitmap(Properties.Resources.circle));
+            imageList.Images.Add(new Bitmap(Properties.Resources.triangle));
+            imageList.Images.Add(new Bitmap(Properties.Resources.rectangle));
+            Bitmap emptyImage = new Bitmap(40, 40);
+            imageList.Images.Add(emptyImage);
+            listViewType.SmallImageList = imageList;
+            for (int i = 0; i < 3; i++)
+            {
+                ListViewItem listViewItem = new ListViewItem(new string[] { "" });
+                listViewItem.ImageIndex = i;
+                listViewType.Items.Add(listViewItem);
+            }
+        }
+
+
         /// <summary>
         /// Удаляем элемент из списка
         /// </summary>
@@ -92,9 +121,10 @@ namespace View
             }
             catch
             {
-                MessageBox.Show("Список пуст");
+                MessageBox.Show("The list is empty!");
             }
         }
+
         /// <summary>
         /// Поиск строки
         /// </summary>
@@ -149,22 +179,26 @@ namespace View
             {
                 FigureBase figure = newForm.Figure;
                 _figureList.Add(figure);
-                MessageBox.Show("Фигура добавлена!");
+                MessageBox.Show("The figure is added!!");
+                
                 if (figure is Model.Circle)
                 {
                     listViewType.Items[0].Selected = true;
                 }
+               
                 else if (figure is Model.Triangle)
                 {
                     listViewType.Items[1].Selected = true;
                 }
-                else
+                
+                else if (figure is Model.Rectangle)
                 {
                     listViewType.Items[2].Selected = true;
                 }
                 listViewType.Select();
             }
         }
+
         /// <summary>
 		/// Сохранение листа
 		/// </summary>
@@ -172,27 +206,30 @@ namespace View
 		/// <param name="e"></param>
 		private void ButtonSave_Click(object sender, EventArgs e)
         {
-            var info = String.Empty;
-            var type = String.Empty;
-            for (int i = 0; i < _figureList.Count; i++)
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                if (_figureList[i] is Model.Circle)
+                string path = Environment.GetFolderPath(
+                    Environment.SpecialFolder.MyDocuments);
+                saveFileDialog.InitialDirectory = path;
+                saveFileDialog.Filter = "Figure files " +
+                    "(*.fig)|*.fig|All files (*.*)|*.*";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    type = "Circle;";
+                    var formatter = new BinaryFormatter();
+                    var fileSave = saveFileDialog.FileName;
+                    using (var fileStream = new FileStream(
+                        fileSave, FileMode.OpenOrCreate))
+                    {
+                        formatter.Serialize(fileStream, _figureList);
+                        MessageBox.Show("File saved!");
+                    }
                 }
-                if (_figureList[i] is Model.Triangle)
-                {
-                    type = "Triangle;";
-                }
-                if (_figureList[i] is Model.Rectangle)
-                {
-                    type = "Rectangle;";
-                }
-                info += type + _figureList[i].GetInfo() + "\n";
             }
-            File.WriteAllText(Directory.GetCurrentDirectory() + "\\lb4.csv", info);
-            MessageBox.Show("Файл сохранен!");
         }
+
         /// <summary>
 		/// Загрузка данных
 		/// </summary>
@@ -200,37 +237,52 @@ namespace View
 		/// <param name="e"></param>
 		private void ButtonDownload_Click(object sender, EventArgs e)
         {
-            try
-            {                
-                using (StreamReader file_csv = new StreamReader(Directory.GetCurrentDirectory() + "\\lb4.csv"))
-                {
-                    string line;
-                    FigureBase figure = null;
-                    while ((line = file_csv.ReadLine()) != null)
-                    {
-                        string[] parts = line.Split(';');
-                        if (parts[0] == "Circle")
-                        {
-                            figure = new Model.Circle(Convert.ToInt32(parts[1]));
-                        }
-                        if (parts[1] == "Triangle")
-                        {
-                            figure = new Model.Triangle(Convert.ToInt32(parts[1]), Convert.ToInt32(parts[2]));
-                        }
-                        if (parts[2] == "Rectangle")
-                        {
-                            figure = new Model.Rectangle(Convert.ToInt32(parts[1]), Convert.ToInt32(parts[2])); ;
-                        }
-                        _figureList.Add(figure);
-                    }
-                    listViewType.Items[0].Selected = true;
-                    MessageBox.Show("Данные загружены!");
-                }
-            }
-            catch (ArgumentException)
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                MessageBox.Show("Не корректные данные!");
-            }
+                string path = Environment.GetFolderPath(
+                    Environment.SpecialFolder.MyDocuments);
+                openFileDialog.InitialDirectory = path;
+                openFileDialog.Filter = "figure files " +
+                    "(*.fig)|*.fig|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    var formatter = new BinaryFormatter();
+                    var fileLoad = openFileDialog.FileName;
+
+                    if (Path.GetExtension(fileLoad) == ".figcalc")
+                    {
+                        try
+                        {
+                            using (var fileStream = new FileStream(
+                                fileLoad, FileMode.OpenOrCreate))
+                            {
+                                var newFigures = (BindingList<FigureBase>)
+                                    formatter.Deserialize(fileStream);
+
+                                _figureList.Clear();
+
+                                foreach (var figure in newFigures)
+                                {
+                                    _figureList.Add(figure);
+                                }
+
+                                MessageBox.Show("File loaded!");
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("File is corrupted, unable to load!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect file format (not *.fig)!");
+                    }                   
+                }
+            }              
         }
     }
 }

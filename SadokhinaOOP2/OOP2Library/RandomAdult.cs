@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace OOP2Library
 {
-    //TODO: статический класс ok
     /// <summary>
     /// Генерация случайного взрослого
     /// </summary>

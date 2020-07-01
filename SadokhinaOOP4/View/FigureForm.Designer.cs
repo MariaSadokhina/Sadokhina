@@ -28,15 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FigureForm));
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonAddFigure = new System.Windows.Forms.Button();
             this.buttonRemoveFigure = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listViewType = new System.Windows.Forms.ListView();
             this.buttonFind = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonDownload = new System.Windows.Forms.Button();
+            this.buttonLoad = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewType = new System.Windows.Forms.ListView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -82,30 +87,11 @@
             this.buttonRemoveFigure.UseVisualStyleBackColor = true;
             this.buttonRemoveFigure.Click += new System.EventHandler(this.ButtonRemoveFigure_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.listViewType);
-            this.groupBox2.Location = new System.Drawing.Point(336, 13);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 191);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Type of Figure";
-            // 
-            // listViewType
-            // 
-            this.listViewType.HideSelection = false;
-            this.listViewType.Location = new System.Drawing.Point(17, 22);
-            this.listViewType.Name = "listViewType";
-            this.listViewType.Size = new System.Drawing.Size(177, 148);
-            this.listViewType.TabIndex = 0;
-            this.listViewType.UseCompatibleStateImageBehavior = false;
-            // 
             // buttonFind
             // 
             this.buttonFind.Location = new System.Drawing.Point(18, 271);
             this.buttonFind.Name = "buttonFind";
-            this.buttonFind.Size = new System.Drawing.Size(119, 32);
+            this.buttonFind.Size = new System.Drawing.Size(257, 32);
             this.buttonFind.TabIndex = 4;
             this.buttonFind.Text = "Find";
             this.buttonFind.UseVisualStyleBackColor = true;
@@ -121,28 +107,68 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
-            // buttonDownload
+            // buttonLoad
             // 
-            this.buttonDownload.Location = new System.Drawing.Point(336, 271);
-            this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.Size = new System.Drawing.Size(119, 32);
-            this.buttonDownload.TabIndex = 6;
-            this.buttonDownload.Text = "Download";
-            this.buttonDownload.UseVisualStyleBackColor = true;
-            this.buttonDownload.Click += new System.EventHandler(this.ButtonDownload_Click);
+            this.buttonLoad.Location = new System.Drawing.Point(336, 271);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(119, 32);
+            this.buttonLoad.TabIndex = 6;
+            this.buttonLoad.Text = "Load";
+            this.buttonLoad.UseVisualStyleBackColor = true;
+            this.buttonLoad.Click += new System.EventHandler(this.ButtonDownload_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "circle.png");
+            this.imageList1.Images.SetKeyName(1, "triangle.png");
+            this.imageList1.Images.SetKeyName(2, "rectangle.png");
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.listViewType);
+            this.groupBox2.Location = new System.Drawing.Point(336, 13);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(119, 191);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Type of Figure";
+            // 
+            // listViewType
+            // 
+            this.listViewType.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listViewType.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.listViewType.HideSelection = false;
+            this.listViewType.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+            this.listViewType.Location = new System.Drawing.Point(12, 22);
+            this.listViewType.MultiSelect = false;
+            this.listViewType.Name = "listViewType";
+            this.listViewType.Scrollable = false;
+            this.listViewType.Size = new System.Drawing.Size(96, 148);
+            this.listViewType.TabIndex = 0;
+            this.listViewType.UseCompatibleStateImageBehavior = false;
+            this.listViewType.View = System.Windows.Forms.View.Details;
+            this.listViewType.SelectedIndexChanged += new System.EventHandler(this.listViewType_SelectedIndexChanged);
             // 
             // FigureForm
             // 
+            this.AcceptButton = this.buttonRemoveFigure;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 315);
-            this.Controls.Add(this.buttonDownload);
+            this.ClientSize = new System.Drawing.Size(469, 313);
+            this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonFind);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonRemoveFigure);
             this.Controls.Add(this.buttonAddFigure);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FigureForm";
             this.Text = "FigureForm";
             this.groupBox1.ResumeLayout(false);
@@ -158,11 +184,13 @@
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button buttonAddFigure;
         private System.Windows.Forms.Button buttonRemoveFigure;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListView listViewType;
         private System.Windows.Forms.Button buttonFind;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button buttonDownload;
+        private System.Windows.Forms.Button buttonLoad;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListView listViewType;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }
 

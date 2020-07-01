@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddFigureForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.buttonRandom = new System.Windows.Forms.Button();
@@ -56,11 +57,13 @@
             // 
             // comboBoxType
             // 
+            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Location = new System.Drawing.Point(7, 34);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(175, 24);
             this.comboBoxType.TabIndex = 0;
+            this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // buttonRandom
             // 
@@ -82,64 +85,68 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(264, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(252, 135);
+            this.groupBox2.Size = new System.Drawing.Size(252, 147);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Information";
             // 
             // maskedTextBox3
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(80, 107);
+            this.maskedTextBox3.Location = new System.Drawing.Point(117, 107);
             this.maskedTextBox3.Name = "maskedTextBox3";
             this.maskedTextBox3.Size = new System.Drawing.Size(100, 22);
             this.maskedTextBox3.TabIndex = 7;
+            this.maskedTextBox3.ValidatingType = typeof(int);
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(80, 74);
+            this.maskedTextBox2.Location = new System.Drawing.Point(117, 74);
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(100, 22);
             this.maskedTextBox2.TabIndex = 4;
+            this.maskedTextBox2.ValidatingType = typeof(int);
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(80, 40);
+            this.maskedTextBox1.BeepOnError = true;
+            this.maskedTextBox1.Location = new System.Drawing.Point(117, 40);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 22);
             this.maskedTextBox1.TabIndex = 3;
+            this.maskedTextBox1.ValidatingType = typeof(int);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(7, 112);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 17);
+            this.label3.Size = new System.Drawing.Size(53, 17);
             this.label3.TabIndex = 2;
-            this.label3.Text = "b:";
+            this.label3.Text = "Heigth:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(7, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 17);
+            this.label2.Size = new System.Drawing.Size(100, 17);
             this.label2.TabIndex = 1;
-            this.label2.Text = "a:";
+            this.label2.Text = "Triangle Base:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 17);
+            this.label1.Size = new System.Drawing.Size(56, 17);
             this.label1.TabIndex = 0;
-            this.label1.Text = "R";
+            this.label1.Text = "Radius:";
             // 
             // buttonOk
             // 
             this.buttonOk.Location = new System.Drawing.Point(264, 166);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.Size = new System.Drawing.Size(75, 30);
             this.buttonOk.TabIndex = 3;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -149,7 +156,7 @@
             // 
             this.buttonCancel.Location = new System.Drawing.Point(379, 166);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 30);
             this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -159,12 +166,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 198);
+            this.ClientSize = new System.Drawing.Size(524, 207);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonRandom);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "AddFigureForm";
             this.Text = "Add Figure";
             this.groupBox1.ResumeLayout(false);
