@@ -33,7 +33,7 @@ namespace Model
         {
             get
             {
-                return (Math.Pow(_radius, 2) * Math.PI);
+                return  Math.Round((Math.Pow(_radius, 2) * Math.PI),3);
             }
         }
 

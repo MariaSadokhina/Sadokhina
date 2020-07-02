@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FigureForm));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonAddFigure = new System.Windows.Forms.Button();
@@ -40,8 +40,8 @@
             this.buttonLoad = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listViewType = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -50,9 +50,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(18, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(498, 243);
+            this.groupBox1.Size = new System.Drawing.Size(483, 273);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Figure List";
@@ -60,18 +60,18 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(6, 21);
+            this.dataGridView.Location = new System.Drawing.Point(19, 24);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(483, 216);
+            this.dataGridView.Size = new System.Drawing.Size(455, 243);
             this.dataGridView.TabIndex = 0;
             // 
             // buttonAddFigure
             // 
-            this.buttonAddFigure.Location = new System.Drawing.Point(18, 270);
+            this.buttonAddFigure.Location = new System.Drawing.Point(18, 304);
             this.buttonAddFigure.Name = "buttonAddFigure";
-            this.buttonAddFigure.Size = new System.Drawing.Size(119, 33);
+            this.buttonAddFigure.Size = new System.Drawing.Size(119, 37);
             this.buttonAddFigure.TabIndex = 1;
             this.buttonAddFigure.Text = "Add Figure";
             this.buttonAddFigure.UseVisualStyleBackColor = true;
@@ -79,9 +79,9 @@
             // 
             // buttonRemoveFigure
             // 
-            this.buttonRemoveFigure.Location = new System.Drawing.Point(196, 271);
+            this.buttonRemoveFigure.Location = new System.Drawing.Point(196, 305);
             this.buttonRemoveFigure.Name = "buttonRemoveFigure";
-            this.buttonRemoveFigure.Size = new System.Drawing.Size(119, 33);
+            this.buttonRemoveFigure.Size = new System.Drawing.Size(119, 37);
             this.buttonRemoveFigure.TabIndex = 2;
             this.buttonRemoveFigure.Text = "Remove Figure";
             this.buttonRemoveFigure.UseVisualStyleBackColor = true;
@@ -89,9 +89,9 @@
             // 
             // buttonFind
             // 
-            this.buttonFind.Location = new System.Drawing.Point(382, 271);
+            this.buttonFind.Location = new System.Drawing.Point(382, 305);
             this.buttonFind.Name = "buttonFind";
-            this.buttonFind.Size = new System.Drawing.Size(119, 32);
+            this.buttonFind.Size = new System.Drawing.Size(119, 36);
             this.buttonFind.TabIndex = 4;
             this.buttonFind.Text = "Find";
             this.buttonFind.UseVisualStyleBackColor = true;
@@ -99,9 +99,9 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(544, 222);
+            this.buttonSave.Location = new System.Drawing.Point(544, 250);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(119, 33);
+            this.buttonSave.Size = new System.Drawing.Size(119, 37);
             this.buttonSave.TabIndex = 5;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -109,9 +109,9 @@
             // 
             // buttonLoad
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(544, 271);
+            this.buttonLoad.Location = new System.Drawing.Point(544, 305);
             this.buttonLoad.Name = "buttonLoad";
-            this.buttonLoad.Size = new System.Drawing.Size(119, 32);
+            this.buttonLoad.Size = new System.Drawing.Size(119, 36);
             this.buttonLoad.TabIndex = 6;
             this.buttonLoad.Text = "Load";
             this.buttonLoad.UseVisualStyleBackColor = true;
@@ -128,9 +128,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.listViewType);
-            this.groupBox2.Location = new System.Drawing.Point(544, 13);
+            this.groupBox2.Location = new System.Drawing.Point(544, 15);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(119, 182);
+            this.groupBox2.Size = new System.Drawing.Size(119, 229);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Type of Figure";
@@ -143,12 +143,12 @@
             this.listViewType.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listViewType.HideSelection = false;
             this.listViewType.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listViewType.Location = new System.Drawing.Point(21, 21);
+            listViewItem6});
+            this.listViewType.Location = new System.Drawing.Point(29, 45);
             this.listViewType.MultiSelect = false;
             this.listViewType.Name = "listViewType";
             this.listViewType.Scrollable = false;
-            this.listViewType.Size = new System.Drawing.Size(76, 150);
+            this.listViewType.Size = new System.Drawing.Size(66, 162);
             this.listViewType.TabIndex = 0;
             this.listViewType.UseCompatibleStateImageBehavior = false;
             this.listViewType.View = System.Windows.Forms.View.Details;
@@ -157,9 +157,10 @@
             // FigureForm
             // 
             this.AcceptButton = this.buttonRemoveFigure;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(673, 321);
+            this.BackColor = System.Drawing.SystemColors.Menu;
+            this.ClientSize = new System.Drawing.Size(673, 361);
             this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonFind);
@@ -167,10 +168,12 @@
             this.Controls.Add(this.buttonRemoveFigure);
             this.Controls.Add(this.buttonAddFigure);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FigureForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FigureForm";
             this.Load += new System.EventHandler(this._formLoad);
             this.groupBox1.ResumeLayout(false);

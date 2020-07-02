@@ -5,7 +5,6 @@ using Model;
 using System.IO;
 using System.Drawing;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.ComponentModel;
 
 namespace View
 {
@@ -17,7 +16,8 @@ namespace View
         /// <summary>
         /// Словарь типов
         /// </summary>
-        private Dictionary<int, Type> _listViewFigure = new Dictionary<int, Type>
+        private Dictionary<int, Type> _listViewFigure = 
+            new Dictionary<int, Type>
         {
             [0] = typeof(Model.Circle),
             [1] = typeof(Model.Triangle),
@@ -54,24 +54,55 @@ namespace View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void listViewType_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void listViewType_SelectedIndexChanged
+            (object sender, EventArgs e)
+        {         
             if (listViewType.SelectedItems.Count >= 1)
             {
                 int firstIndex = listViewType.SelectedIndices[0];
                 dataGridView.Rows.Clear();
-                dataGridView.ColumnCount = 4;
-                dataGridView.Columns[0].Name = "ID";
-                dataGridView.Columns[1].Name = "a";
-                dataGridView.Columns[2].Name = "b";
-                dataGridView.Columns[3].Name = "Area";
+
+                if (firstIndex == 0)
+                {
+                    dataGridView.ColumnCount = 3;
+                    dataGridView.Columns[0].Name = "ID";
+                    dataGridView.Columns[1].Name = "Radius";
+                    dataGridView.Columns[2].Name = "Area";
+                }
+
+                else if (firstIndex == 1)
+                {
+                    dataGridView.ColumnCount = 4;
+                    dataGridView.Columns[0].Name = "ID";
+                    dataGridView.Columns[1].Name = "Heigth";
+                    dataGridView.Columns[2].Name = "Triangle Base";
+                    dataGridView.Columns[3].Name = "Area";
+                }
+
+                else if (firstIndex == 2)
+                {
+                    dataGridView.ColumnCount = 4;
+                    dataGridView.Columns[0].Name = "ID";
+                    dataGridView.Columns[1].Name = "Length";
+                    dataGridView.Columns[2].Name = "Width";
+                    dataGridView.Columns[3].Name = "Area";
+                }
                 var type = _listViewFigure[firstIndex];
                 for (int i = 0; i < _figureList.Count; i++)
                 {
                     if (type != _figureList[i].GetType()) continue;
 
-                    string[] info = _figureList[i].GetInfo().Split(new char[] { ';' });
-                    dataGridView.Rows.Add(i + 1, info[0], info[1], info[2]);
+                    string[] info = _figureList[i].GetInfo().
+                        Split(new char[] { ';' });
+
+                    if (firstIndex == 0)
+                    {
+                        dataGridView.Rows.Add(i + 1, info[0], info[2]);
+                    }
+                    else
+                    {
+                        dataGridView.Rows.Add(i + 1, info[0], info[1], info[2]);
+                    }
                 }
             }
         }
@@ -84,17 +115,18 @@ namespace View
             listViewType.Items.Clear();
             ImageList imageList = new ImageList
             {
-                ImageSize = new Size(40, 40)
+                ImageSize = new Size(50, 50)
             };
             imageList.Images.Add(new Bitmap(Properties.Resources.circle));
             imageList.Images.Add(new Bitmap(Properties.Resources.triangle));
             imageList.Images.Add(new Bitmap(Properties.Resources.rectangle));
-            Bitmap emptyImage = new Bitmap(40, 40);
+            Bitmap emptyImage = new Bitmap(50, 50);
             imageList.Images.Add(emptyImage);
             listViewType.SmallImageList = imageList;
             for (int i = 0; i < 3; i++)
             {
-                ListViewItem listViewItem = new ListViewItem(new string[] { "" })
+                ListViewItem listViewItem = new ListViewItem
+                    (new string[] { "" })
                 {
                     ImageIndex = i
                 };
@@ -115,7 +147,8 @@ namespace View
                 if (listViewType.SelectedItems.Count >= 1)
                 {
                     int firstIndex = listViewType.SelectedIndices[0];
-                    foreach (DataGridViewRow row in dataGridView.SelectedRows)
+                    foreach (DataGridViewRow row in dataGridView.
+                        SelectedRows)
                     {
                         int index = dataGridView.Rows.IndexOf(row);
                         _figureList.RemoveAt(index);
@@ -143,25 +176,29 @@ namespace View
                 for (int i = 0; i < dataGridView.RowCount - 1; i++)
                 {
                     dataGridView.Rows[i].Selected = false;
-                    var formattedValue = dataGridView[3, i].FormattedValue.ToString();
+                    var formattedValue = dataGridView[3, i].FormattedValue.
+                        ToString();
                     switch (newForm.Condition)
                     {
                         case (ConditionType.More):
-                            if (Convert.ToDouble(formattedValue) > condition)
+                            if (Convert.ToDouble(formattedValue) > 
+                                condition)
                             {
                                 dataGridView.Rows[i].Selected = true;
                             }
                             break;
 
                         case (ConditionType.Less):
-                            if (Convert.ToDouble(formattedValue) < condition)
+                            if (Convert.ToDouble(formattedValue) < 
+                                condition)
                             {
                                 dataGridView.Rows[i].Selected = true;
                             }
                             break;
 
                         case (ConditionType.Equally):
-                            if (Convert.ToDouble(formattedValue) == condition)
+                            if (Convert.ToDouble(formattedValue) == 
+                                condition)
                             {
                                 dataGridView.Rows[i].Selected = true;
                             }
@@ -263,7 +300,7 @@ namespace View
                             using (var fileStream = new FileStream(
                                 fileLoad, FileMode.OpenOrCreate))
                             {
-                                var newFigures = (BindingList<FigureBase>)
+                                var newFigures = (List<FigureBase>)
                                     formatter.Deserialize(fileStream);
 
                                 _figureList.Clear();
@@ -279,12 +316,14 @@ namespace View
 
                         catch
                         {
-                            MessageBox.Show("File is corrupted, unable to load!");
+                            MessageBox.Show("File is corrupted, " +
+                                "unable to load!");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Incorrect file format (not *.fig)!");
+                        MessageBox.Show("Incorrect file format " +
+                            "(not *.fig)!");
                     }                   
                 }
             }              

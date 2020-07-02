@@ -53,7 +53,7 @@ namespace Model
         {
             get
             {
-                return (_triangleBase * _heigth) / 2;
+                return Math.Round(((_triangleBase * _heigth) / 2), 3);
             }
         }
         /// <summary>

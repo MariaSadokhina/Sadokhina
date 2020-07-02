@@ -51,7 +51,7 @@ namespace Model
         {
             get
             {
-                return _width * _length;
+                return Math.Round((_width * _length), 3);
             }
         }
         /// <summary>

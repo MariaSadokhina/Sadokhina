@@ -53,12 +53,7 @@ namespace View
             {
                 maskedTextBox1.Enabled = true;
             }
-            else if (comboBoxType.Text == _figureKey[FigureType.Triangle])
-            {
-                maskedTextBox2.Enabled = true;
-                maskedTextBox3.Enabled = true;
-            }
-            else if (comboBoxType.Text == _figureKey[FigureType.Rectangle])
+            else
             {
                 maskedTextBox2.Enabled = true;
                 maskedTextBox3.Enabled = true;
@@ -80,8 +75,19 @@ namespace View
             {
                 maskedTextBox1.Enabled = true;
             }
-            else
+
+            else if (comboBoxType.Text == _figureKey[FigureType.Triangle])
             {
+                label2.Text = "Triangle Base:";
+                label3.Text = "Height:";
+                maskedTextBox2.Enabled = true;
+                maskedTextBox3.Enabled = true;
+            }
+
+            else if (comboBoxType.Text == _figureKey[FigureType.Rectangle])
+            {
+                label2.Text = "Width:";
+                label3.Text = "Length:";
                 maskedTextBox2.Enabled = true;
                 maskedTextBox3.Enabled = true;
             }
@@ -114,16 +120,12 @@ namespace View
 
                 if (comboBoxType.Text == _figureKey[FigureType.Triangle])
                 {
-                    label2.Text = "Triangle Base:";
-                    label3.Text = "Height:";
                     figure = new Triangle(GetCorrect(Convert.ToDouble, maskedTextBox2.Text),
                             GetCorrect(Convert.ToDouble, maskedTextBox3.Text));
                 }
                 
                 if (comboBoxType.Text == _figureKey[FigureType.Rectangle])
                 {
-                    label2.Text = "Width:";
-                    label3.Text = "Length:";
                     figure = new Rectangle(GetCorrect(Convert.ToDouble, maskedTextBox2.Text),
                             GetCorrect(Convert.ToDouble, maskedTextBox3.Text));
                 }
@@ -172,21 +174,12 @@ namespace View
                 maskedTextBox1.Text = Convert.ToString(random.Next(1, 50));
             }
 
-            if (comboBoxType.Text == _figureKey[FigureType.Triangle])
+            else
             {
-                label2.Text = "Triangle Base:";
-                label3.Text = "Height:";
                 maskedTextBox2.Text = Convert.ToString(random.Next(1, 50));
                 maskedTextBox3.Text = Convert.ToString(random.Next(1, 50));
             }
 
-            if (comboBoxType.Text == _figureKey[FigureType.Rectangle])
-            {
-                label2.Text = "Width:";
-                label3.Text = "Length:";
-                maskedTextBox2.Text = Convert.ToString(random.Next(1, 50));
-                maskedTextBox3.Text = Convert.ToString(random.Next(1, 50));
-            }
         }
 
     }

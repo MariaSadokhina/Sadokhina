@@ -48,9 +48,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.comboBoxType);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
+            this.groupBox1.Location = new System.Drawing.Point(13, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 76);
+            this.groupBox1.Size = new System.Drawing.Size(200, 86);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Type Figure";
@@ -59,17 +59,17 @@
             // 
             this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(7, 34);
+            this.comboBoxType.Location = new System.Drawing.Point(7, 38);
             this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(175, 24);
+            this.comboBoxType.Size = new System.Drawing.Size(175, 26);
             this.comboBoxType.TabIndex = 0;
             this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // buttonRandom
             // 
-            this.buttonRandom.Location = new System.Drawing.Point(20, 118);
+            this.buttonRandom.Location = new System.Drawing.Point(20, 133);
             this.buttonRandom.Name = "buttonRandom";
-            this.buttonRandom.Size = new System.Drawing.Size(175, 30);
+            this.buttonRandom.Size = new System.Drawing.Size(175, 34);
             this.buttonRandom.TabIndex = 1;
             this.buttonRandom.Text = "Create Random";
             this.buttonRandom.UseVisualStyleBackColor = true;
@@ -83,70 +83,70 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(264, 13);
+            this.groupBox2.Location = new System.Drawing.Point(264, 15);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(252, 147);
+            this.groupBox2.Size = new System.Drawing.Size(252, 165);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Information";
             // 
             // maskedTextBox3
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(117, 107);
+            this.maskedTextBox3.Location = new System.Drawing.Point(117, 120);
             this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(100, 22);
+            this.maskedTextBox3.Size = new System.Drawing.Size(100, 26);
             this.maskedTextBox3.TabIndex = 7;
             this.maskedTextBox3.ValidatingType = typeof(int);
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(117, 74);
+            this.maskedTextBox2.Location = new System.Drawing.Point(117, 83);
             this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 22);
+            this.maskedTextBox2.Size = new System.Drawing.Size(100, 26);
             this.maskedTextBox2.TabIndex = 4;
             this.maskedTextBox2.ValidatingType = typeof(int);
             // 
             // maskedTextBox1
             // 
             this.maskedTextBox1.BeepOnError = true;
-            this.maskedTextBox1.Location = new System.Drawing.Point(117, 40);
+            this.maskedTextBox1.Location = new System.Drawing.Point(117, 45);
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 22);
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 26);
             this.maskedTextBox1.TabIndex = 3;
             this.maskedTextBox1.ValidatingType = typeof(int);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 112);
+            this.label3.Location = new System.Drawing.Point(7, 126);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 17);
+            this.label3.Size = new System.Drawing.Size(57, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "Heigth:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 79);
+            this.label2.Location = new System.Drawing.Point(7, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 17);
+            this.label2.Size = new System.Drawing.Size(102, 19);
             this.label2.TabIndex = 1;
             this.label2.Text = "Triangle Base:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 45);
+            this.label1.Location = new System.Drawing.Point(6, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 17);
+            this.label1.Size = new System.Drawing.Size(55, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Radius:";
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(264, 166);
+            this.buttonOk.Location = new System.Drawing.Point(264, 187);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 30);
+            this.buttonOk.Size = new System.Drawing.Size(75, 34);
             this.buttonOk.TabIndex = 3;
             this.buttonOk.Text = "OK";
             this.buttonOk.UseVisualStyleBackColor = true;
@@ -154,9 +154,9 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(379, 166);
+            this.buttonCancel.Location = new System.Drawing.Point(379, 187);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 30);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 34);
             this.buttonCancel.TabIndex = 4;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -164,18 +164,21 @@
             // 
             // AddFigureForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 207);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(524, 233);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonRandom);
             this.Controls.Add(this.groupBox1);
+            this.Font = new System.Drawing.Font("Comic Sans MS", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AddFigureForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Figure";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
