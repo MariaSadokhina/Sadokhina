@@ -43,7 +43,7 @@ namespace View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _formLoad(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
             var figureList = new List<FigureBase>();
             _figureList = figureList;
@@ -55,7 +55,7 @@ namespace View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void listViewType_SelectedIndexChanged
+        private void ListViewType_SelectedIndexChanged
             (object sender, EventArgs e)
         {         
             if (listViewType.SelectedItems.Count >= 1)
@@ -70,7 +70,6 @@ namespace View
                     dataGridView.Columns[1].Name = "Radius";
                     dataGridView.Columns[2].Name = "Area";
                 }
-
                 else if (firstIndex == 1)
                 {
                     dataGridView.ColumnCount = 4;
@@ -79,7 +78,6 @@ namespace View
                     dataGridView.Columns[2].Name = "Triangle Base";
                     dataGridView.Columns[3].Name = "Area";
                 }
-
                 else if (firstIndex == 2)
                 {
                     dataGridView.ColumnCount = 4;
@@ -88,6 +86,15 @@ namespace View
                     dataGridView.Columns[2].Name = "Width";
                     dataGridView.Columns[3].Name = "Area";
                 }
+                else if (firstIndex == 3)
+                {
+                    dataGridView.ColumnCount = 4;
+                    dataGridView.Columns[0].Name = "ID";
+                    dataGridView.Columns[1].Name = "Name figure";
+                    dataGridView.Columns[2].Name = "Information";
+                    dataGridView.Columns[3].Name = "Area";
+                }
+
                 var type = _listViewFigure[firstIndex];
                 for (int i = 0; i < _figureList.Count; i++)
                 {
@@ -99,6 +106,10 @@ namespace View
                     if (firstIndex == 0)
                     {
                         dataGridView.Rows.Add(i + 1, info[0], info[2]);
+                    }
+                    else if (firstIndex == 3)
+                    {
+                        dataGridView.Rows.Add(i + 1, info[0], info[1], info[2]);
                     }
                     else
                     {
@@ -121,10 +132,11 @@ namespace View
             imageList.Images.Add(new Bitmap(Properties.Resources.circle));
             imageList.Images.Add(new Bitmap(Properties.Resources.triangle));
             imageList.Images.Add(new Bitmap(Properties.Resources.rectangle));
+            imageList.Images.Add(new Bitmap(Properties.Resources.allfigure));
             Bitmap emptyImage = new Bitmap(50, 50);
             imageList.Images.Add(emptyImage);
             listViewType.SmallImageList = imageList;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 ListViewItem listViewItem = new ListViewItem
                     (new string[] { "" })
@@ -227,7 +239,6 @@ namespace View
                     _listViewFigure.FirstOrDefault(
                         x => x.Value == figure.GetType()).Key;
                 listViewType.Items[itemNumber].Selected = true;
-
                 
                 listViewType.Select();
             }

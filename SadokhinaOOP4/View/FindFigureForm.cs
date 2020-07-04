@@ -32,7 +32,7 @@ namespace View
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void Button1_Click(object sender, EventArgs e)
+		private void ButtonOk_Click(object sender, EventArgs e)
 		{
 			try
 			{

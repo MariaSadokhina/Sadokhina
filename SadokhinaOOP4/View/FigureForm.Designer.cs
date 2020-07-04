@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FigureForm));
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonAddFigure = new System.Windows.Forms.Button();
@@ -62,6 +62,7 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(19, 24);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.Size = new System.Drawing.Size(455, 243);
@@ -124,6 +125,7 @@
             this.imageList1.Images.SetKeyName(0, "circle.png");
             this.imageList1.Images.SetKeyName(1, "triangle.png");
             this.imageList1.Images.SetKeyName(2, "rectangle.png");
+            this.imageList1.Images.SetKeyName(3, "all.jpg");
             // 
             // groupBox2
             // 
@@ -143,7 +145,7 @@
             this.listViewType.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listViewType.HideSelection = false;
             this.listViewType.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem6});
+            listViewItem1});
             this.listViewType.Location = new System.Drawing.Point(29, 45);
             this.listViewType.MultiSelect = false;
             this.listViewType.Name = "listViewType";
@@ -152,7 +154,7 @@
             this.listViewType.TabIndex = 0;
             this.listViewType.UseCompatibleStateImageBehavior = false;
             this.listViewType.View = System.Windows.Forms.View.Details;
-            this.listViewType.SelectedIndexChanged += new System.EventHandler(this.listViewType_SelectedIndexChanged);
+            this.listViewType.SelectedIndexChanged += new System.EventHandler(this.ListViewType_SelectedIndexChanged);
             // 
             // FigureForm
             // 
@@ -175,7 +177,7 @@
             this.Name = "FigureForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FigureForm";
-            this.Load += new System.EventHandler(this._formLoad);
+            this.Load += new System.EventHandler(this.FormLoad);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.groupBox2.ResumeLayout(false);

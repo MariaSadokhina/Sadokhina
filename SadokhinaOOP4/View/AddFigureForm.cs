@@ -65,31 +65,39 @@ namespace View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>	
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            maskedTextBox1.Enabled = false;
-            maskedTextBox2.Enabled = false;
-            maskedTextBox3.Enabled = false;
-            
+            maskedTextBox1.Visible = false;
+            maskedTextBox2.Visible = false;
+            maskedTextBox3.Visible = false;
+            label1.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+
             if (comboBoxType.Text == _figureKey[FigureType.Circle])
             {
-                maskedTextBox1.Enabled = true;
+                label1.Visible = true;
+                maskedTextBox1.Visible = true;
             }
 
             else if (comboBoxType.Text == _figureKey[FigureType.Triangle])
             {
+                label2.Visible = true;
+                label3.Visible = true;
                 label2.Text = "Triangle Base:";
                 label3.Text = "Height:";
-                maskedTextBox2.Enabled = true;
-                maskedTextBox3.Enabled = true;
+                maskedTextBox2.Visible = true;
+                maskedTextBox3.Visible = true;
             }
 
             else if (comboBoxType.Text == _figureKey[FigureType.Rectangle])
             {
+                label2.Visible = true;
+                label3.Visible = true;
                 label2.Text = "Width:";
                 label3.Text = "Length:";
-                maskedTextBox2.Enabled = true;
-                maskedTextBox3.Enabled = true;
+                maskedTextBox2.Visible = true;
+                maskedTextBox3.Visible = true;
             }
         }
 
@@ -147,7 +155,7 @@ namespace View
         /// <param name="convert">Параметр</param>
         /// <param name="text">Входная строка</param>
         /// <returns></returns>
-        public static T GetCorrect<T>(Func<string, T> convert, string text)
+        private static T GetCorrect<T>(Func<string, T> convert, string text)
         {
             try
             {
@@ -173,7 +181,6 @@ namespace View
             {
                 maskedTextBox1.Text = Convert.ToString(random.Next(1, 50));
             }
-
             else
             {
                 maskedTextBox2.Text = Convert.ToString(random.Next(1, 50));
