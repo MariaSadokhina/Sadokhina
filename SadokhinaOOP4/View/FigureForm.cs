@@ -86,7 +86,7 @@ namespace View
                     dataGridView.Columns[2].Name = "Width";
                     dataGridView.Columns[3].Name = "Area";
                 }
-                else if (firstIndex == 3)
+                else
                 {
                     dataGridView.ColumnCount = 4;
                     dataGridView.Columns[0].Name = "ID";

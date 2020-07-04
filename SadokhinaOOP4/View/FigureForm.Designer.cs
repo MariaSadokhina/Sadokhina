@@ -52,7 +52,7 @@
             this.groupBox1.Controls.Add(this.dataGridView);
             this.groupBox1.Location = new System.Drawing.Point(18, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(483, 273);
+            this.groupBox1.Size = new System.Drawing.Size(483, 342);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Figure List";
@@ -65,12 +65,12 @@
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(455, 243);
+            this.dataGridView.Size = new System.Drawing.Size(455, 312);
             this.dataGridView.TabIndex = 0;
             // 
             // buttonAddFigure
             // 
-            this.buttonAddFigure.Location = new System.Drawing.Point(18, 304);
+            this.buttonAddFigure.Location = new System.Drawing.Point(18, 373);
             this.buttonAddFigure.Name = "buttonAddFigure";
             this.buttonAddFigure.Size = new System.Drawing.Size(119, 37);
             this.buttonAddFigure.TabIndex = 1;
@@ -80,7 +80,7 @@
             // 
             // buttonRemoveFigure
             // 
-            this.buttonRemoveFigure.Location = new System.Drawing.Point(196, 305);
+            this.buttonRemoveFigure.Location = new System.Drawing.Point(196, 374);
             this.buttonRemoveFigure.Name = "buttonRemoveFigure";
             this.buttonRemoveFigure.Size = new System.Drawing.Size(119, 37);
             this.buttonRemoveFigure.TabIndex = 2;
@@ -90,7 +90,7 @@
             // 
             // buttonFind
             // 
-            this.buttonFind.Location = new System.Drawing.Point(382, 305);
+            this.buttonFind.Location = new System.Drawing.Point(382, 374);
             this.buttonFind.Name = "buttonFind";
             this.buttonFind.Size = new System.Drawing.Size(119, 36);
             this.buttonFind.TabIndex = 4;
@@ -100,7 +100,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(544, 250);
+            this.buttonSave.Location = new System.Drawing.Point(544, 319);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(119, 37);
             this.buttonSave.TabIndex = 5;
@@ -110,7 +110,7 @@
             // 
             // buttonLoad
             // 
-            this.buttonLoad.Location = new System.Drawing.Point(544, 305);
+            this.buttonLoad.Location = new System.Drawing.Point(544, 374);
             this.buttonLoad.Name = "buttonLoad";
             this.buttonLoad.Size = new System.Drawing.Size(119, 36);
             this.buttonLoad.TabIndex = 6;
@@ -132,7 +132,7 @@
             this.groupBox2.Controls.Add(this.listViewType);
             this.groupBox2.Location = new System.Drawing.Point(544, 15);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(119, 229);
+            this.groupBox2.Size = new System.Drawing.Size(119, 272);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Type of Figure";
@@ -150,7 +150,7 @@
             this.listViewType.MultiSelect = false;
             this.listViewType.Name = "listViewType";
             this.listViewType.Scrollable = false;
-            this.listViewType.Size = new System.Drawing.Size(66, 162);
+            this.listViewType.Size = new System.Drawing.Size(66, 208);
             this.listViewType.TabIndex = 0;
             this.listViewType.UseCompatibleStateImageBehavior = false;
             this.listViewType.View = System.Windows.Forms.View.Details;
@@ -162,7 +162,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
-            this.ClientSize = new System.Drawing.Size(673, 361);
+            this.ClientSize = new System.Drawing.Size(673, 437);
             this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonFind);
