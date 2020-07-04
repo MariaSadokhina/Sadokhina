@@ -138,7 +138,9 @@ namespace View
                             GetCorrect(Convert.ToDouble, maskedTextBox3.Text));
                 }
 
-                Figure = figure;
+                //TODO: Поменять сообщение на не выбран тип или ещё как-то
+                Figure = figure ?? throw new ArgumentException();
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
