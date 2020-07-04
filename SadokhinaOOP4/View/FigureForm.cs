@@ -94,7 +94,7 @@ namespace View
                     dataGridView.Columns[2].Name = "Information";
                     dataGridView.Columns[3].Name = "Area";
                 }
-
+             
                 for (int i = 0; i < _figureList.Count; i++)
                 {
                     if (_listViewFigure[0] != _figureList[i].GetType()) continue;
@@ -105,7 +105,7 @@ namespace View
                     if (firstIndex == 0)
                     {
                         dataGridView.Rows.Add(i + 1, info[0], info[2]);
-                    }             
+                    }
                 }
 
                 for (int i = 0; i < _figureList.Count; i++)
@@ -132,7 +132,7 @@ namespace View
                     {
                         dataGridView.Rows.Add(i + 1, info[0], info[1], info[2]);
                     }
-                }
+                }               
 
                 for (int i = 0; i < _figureList.Count; i++)
                 {
@@ -140,35 +140,28 @@ namespace View
                         Split(new char[] { ';' });
 
                     if (firstIndex == 3)
-                    {                        
-                        FigureType figureType = new FigureType();
-                        switch (figureType)
+                    {
+                        if (_figureList[i].GetType().Name == "Circle")
                         {
-                            case (FigureType.Circle):
-                                {
-                                    dataGridView.Rows.Add(i + 1, 
-                                        _figureList[i].GetType().Name, 
-                                        "Radius = " + info[0], info[2]);
-                                }                                
-                                break;
-                            case (FigureType.Triangle):
-                                {
-                                    dataGridView.Rows.Add(i + 1, 
-                                        _figureList[i].GetType().Name, 
-                                        "Lenght = " + info[0] + 
-                                        "; Width = " + info[1], info[2]);
-                                }                                
-                                break;
-                            case (FigureType.Rectangle):
-                                {
-                                    dataGridView.Rows.Add(i + 1,
-                                        _figureList[i].GetType().Name, 
-                                        "Lenght = " + info[0] + 
-                                        "; Width = " + info[1], info[2]);
-                                }                               
-                                break;
+                            dataGridView.Rows.Add(i + 1,
+                                _figureList[i].GetType().Name,
+                                "Radius = " + info[0], info[2]);
                         }
-                    }
+                        else if (_figureList[i].GetType().Name == "Triangle")
+                        {
+                            dataGridView.Rows.Add(i + 1,
+                                _figureList[i].GetType().Name,
+                                "Lenght = " + info[0] +
+                                "; Width = " + info[1], info[2]);
+                        }
+                        else if (_figureList[i].GetType().Name == "Rectangle")
+                        {
+                            dataGridView.Rows.Add(i + 1,
+                                _figureList[i].GetType().Name,
+                                "Lenght = " + info[0] +
+                                "; Width = " + info[1], info[2]);
+                        }
+                    }                          
                 }
             }
         }
