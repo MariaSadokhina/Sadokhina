@@ -56,7 +56,7 @@ namespace View
 			}
 			catch (FormatException)
 			{
-				MessageBox.Show("Некорректные данные!");
+				MessageBox.Show("Incorrect data!");
 			}
 		}
 	}

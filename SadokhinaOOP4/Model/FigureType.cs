@@ -1,7 +1,7 @@
 ﻿namespace Model
 {
     /// <summary>
-    /// Возможные типы транспорта
+    /// Возможные типы фигур
     /// </summary>
     public enum FigureType
     {

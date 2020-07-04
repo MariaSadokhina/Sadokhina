@@ -79,7 +79,6 @@ namespace View
                 label1.Visible = true;
                 maskedTextBox1.Visible = true;
             }
-
             else if (comboBoxType.Text == _figureKey[FigureType.Triangle])
             {
                 label2.Visible = true;
@@ -89,7 +88,6 @@ namespace View
                 maskedTextBox2.Visible = true;
                 maskedTextBox3.Visible = true;
             }
-
             else if (comboBoxType.Text == _figureKey[FigureType.Rectangle])
             {
                 label2.Visible = true;
@@ -138,15 +136,15 @@ namespace View
                             GetCorrect(Convert.ToDouble, maskedTextBox3.Text));
                 }
 
-                //TODO: Поменять сообщение на не выбран тип или ещё как-то
-                Figure = figure ?? throw new ArgumentException();
+                //TODO: ОК Поменять сообщение на не выбран тип или ещё как-то 
+                Figure = figure ?? throw new ArgumentException("No type selected!");
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Не корректные данные!");
+                MessageBox.Show("Incorrect data!");
             }
         }
 
@@ -188,8 +186,6 @@ namespace View
                 maskedTextBox2.Text = Convert.ToString(random.Next(1, 50));
                 maskedTextBox3.Text = Convert.ToString(random.Next(1, 50));
             }
-
         }
-
     }
 }

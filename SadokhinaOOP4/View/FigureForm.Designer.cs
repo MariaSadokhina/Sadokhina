@@ -125,7 +125,7 @@
             this.imageList1.Images.SetKeyName(0, "circle.png");
             this.imageList1.Images.SetKeyName(1, "triangle.png");
             this.imageList1.Images.SetKeyName(2, "rectangle.png");
-            this.imageList1.Images.SetKeyName(3, "all.jpg");
+            this.imageList1.Images.SetKeyName(3, "all.png");
             // 
             // groupBox2
             // 
