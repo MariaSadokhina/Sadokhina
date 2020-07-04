@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Model;
 using System.IO;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace View
@@ -221,21 +222,13 @@ namespace View
                 FigureBase figure = newForm.Figure;
                 _figureList.Add(figure);
                 MessageBox.Show("The figure is added!!");
+
+                var itemNumber = 
+                    _listViewFigure.FirstOrDefault(
+                        x => x.Value == figure.GetType()).Key;
+                listViewType.Items[itemNumber].Selected = true;
+
                 
-                if (figure is Model.Circle)
-                {
-                    listViewType.Items[0].Selected = true;
-                }
-               
-                else if (figure is Model.Triangle)
-                {
-                    listViewType.Items[1].Selected = true;
-                }
-                
-                else if (figure is Model.Rectangle)
-                {
-                    listViewType.Items[2].Selected = true;
-                }
                 listViewType.Select();
             }
         }
