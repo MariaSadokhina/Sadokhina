@@ -241,35 +241,72 @@ namespace View
                 for (int i = 0; i < dataGridView.RowCount - 1; i++)
                 {
                     dataGridView.Rows[i].Selected = false;
-                    var formattedValue = dataGridView[3, i].FormattedValue.
-                        ToString();
-                    switch (newForm.Condition)
+
+                    int firstIndex = listViewType.SelectedIndices[0];
+                    if (firstIndex == 0)
                     {
-                        case (ConditionType.More):
-                            if (Convert.ToDouble(formattedValue) > 
-                                condition)
-                            {
-                                dataGridView.Rows[i].Selected = true;
-                            }
-                            break;
+                        var formattedValue = dataGridView[2, i].FormattedValue.
+                           ToString();
+                        switch (newForm.Condition)
+                        {
+                            case (ConditionType.More):
+                                if (Convert.ToDouble(formattedValue) >
+                                    condition)
+                                {
+                                    dataGridView.Rows[i].Selected = true;
+                                }
+                                break;
 
-                        case (ConditionType.Less):
-                            if (Convert.ToDouble(formattedValue) < 
-                                condition)
-                            {
-                                dataGridView.Rows[i].Selected = true;
-                            }
-                            break;
+                            case (ConditionType.Less):
+                                if (Convert.ToDouble(formattedValue) <
+                                    condition)
+                                {
+                                    dataGridView.Rows[i].Selected = true;
+                                }
+                                break;
 
-                        case (ConditionType.Equally):
-                            if (Convert.ToDouble(formattedValue) == 
-                                condition)
-                            {
-                                dataGridView.Rows[i].Selected = true;
-                            }
-                            break;
+                            case (ConditionType.Equally):
+                                if (Convert.ToDouble(formattedValue) ==
+                                    condition)
+                                {
+                                    dataGridView.Rows[i].Selected = true;
+                                }
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        var formattedValue = dataGridView[3, i].FormattedValue.
+                            ToString();
+                        switch (newForm.Condition)
+                        {
+                            case (ConditionType.More):
+                                if (Convert.ToDouble(formattedValue) >
+                                    condition)
+                                {
+                                    dataGridView.Rows[i].Selected = true;
+                                }
+                                break;
+
+                            case (ConditionType.Less):
+                                if (Convert.ToDouble(formattedValue) <
+                                    condition)
+                                {
+                                    dataGridView.Rows[i].Selected = true;
+                                }
+                                break;
+
+                            case (ConditionType.Equally):
+                                if (Convert.ToDouble(formattedValue) ==
+                                    condition)
+                                {
+                                    dataGridView.Rows[i].Selected = true;
+                                }
+                                break;
+                        }
                     }
                 }
+
             }
         }
 
