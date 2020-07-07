@@ -202,24 +202,24 @@ namespace View
         /// <param name="e"></param>
         private void ButtonRemoveFigure_Click(object sender, EventArgs e)
         {
-            try
+             try
+             {
+                 if (listViewType.SelectedItems.Count >= 1)
+                 {
+                     int firstIndex = listViewType.SelectedIndices[0];
+                     foreach (DataGridViewRow row in dataGridView.
+                         SelectedRows)
+                     {
+                         int index = dataGridView.Rows.IndexOf(row);
+                         _figureList.RemoveAt(index);
+                         dataGridView.Rows.Remove(row);
+                     }
+                 }
+             }
+             catch (ArgumentOutOfRangeException)
             {
-                if (listViewType.SelectedItems.Count >= 1)
-                {
-                    int firstIndex = listViewType.SelectedIndices[0];
-                    foreach (DataGridViewRow row in dataGridView.
-                        SelectedRows)
-                    {
-                        int index = dataGridView.Rows.IndexOf(row);
-                        _figureList.RemoveAt(index);
-                        dataGridView.Rows.Remove(row);
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("The list is empty!");
-            }
+                 MessageBox.Show("The list is empty!");
+             }
         }
 
         /// <summary>
