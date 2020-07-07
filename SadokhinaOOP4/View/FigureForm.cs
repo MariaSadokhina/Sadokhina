@@ -202,8 +202,9 @@ namespace View
         /// <param name="e"></param>
         private void ButtonRemoveFigure_Click(object sender, EventArgs e)
         {
-             try
-             {
+   
+            try
+            {
                  if (listViewType.SelectedItems.Count >= 1)
                  {
                      int firstIndex = listViewType.SelectedIndices[0];
@@ -215,11 +216,12 @@ namespace View
                          dataGridView.Rows.Remove(row);
                      }
                  }
-             }
-             catch (ArgumentOutOfRangeException)
+            }
+            
+            catch
             {
-                 MessageBox.Show("The list is empty!");
-             }
+            }
+
         }
 
         /// <summary>
@@ -379,6 +381,46 @@ namespace View
                 }
 
                 int firstIndex = listViewType.SelectedIndices[0];
+
+                for (int i = 0; i < _figureList.Count; i++)
+                {
+                    if (_listViewFigure[0] != _figureList[i].GetType()) continue;
+
+                    string[] info = _figureList[i].GetInfo().
+                        Split(new char[] { ';' });
+
+                    if (firstIndex == 0)
+                    {
+                        dataGridView.Rows.Add(i + 1, info[0], info[2]);
+                    }
+                }
+
+                for (int i = 0; i < _figureList.Count; i++)
+                {
+                    if (_listViewFigure[1] != _figureList[i].GetType()) continue;
+
+                    string[] info = _figureList[i].GetInfo().
+                        Split(new char[] { ';' });
+
+                    if (firstIndex == 1)
+                    {
+                        dataGridView.Rows.Add(i + 1, info[0], info[1], info[2]);
+                    }
+                }
+
+                for (int i = 0; i < _figureList.Count; i++)
+                {
+                    if (_listViewFigure[2] != _figureList[i].GetType()) continue;
+
+                    string[] info = _figureList[i].GetInfo().
+                        Split(new char[] { ';' });
+
+                    if (firstIndex == 2)
+                    {
+                        dataGridView.Rows.Add(i + 1, info[0], info[1], info[2]);
+                    }
+                }
+
                 for (int i = 0; i < _figureList.Count; i++)
                 {
                     string[] info = _figureList[i].GetInfo().
