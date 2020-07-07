@@ -94,6 +94,7 @@ namespace View
                     dataGridView.Columns[2].Name = "Information";
                     dataGridView.Columns[3].Name = "Area";
                 }
+                
              
                 for (int i = 0; i < _figureList.Count; i++)
                 {
@@ -163,6 +164,7 @@ namespace View
                         }
                     }                          
                 }
+               
             }
         }
 
@@ -289,8 +291,10 @@ namespace View
                     _listViewFigure.FirstOrDefault(
                         x => x.Value == figure.GetType()).Key;
                 listViewType.Items[itemNumber].Selected = true;
-                
+
+                ListViewType_SelectedIndexChanged(this, null);
                 listViewType.Select();
+                            
             }
         }
 
