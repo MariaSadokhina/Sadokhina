@@ -377,6 +377,37 @@ namespace View
                             "(not *.fig)!");
                     }                   
                 }
+
+                int firstIndex = listViewType.SelectedIndices[0];
+                for (int i = 0; i < _figureList.Count; i++)
+                {
+                    string[] info = _figureList[i].GetInfo().
+                        Split(new char[] { ';' });
+
+                    if (firstIndex == 3)
+                    {
+                        if (_figureList[i].GetType().Name == "Circle")
+                        {
+                            dataGridView.Rows.Add(i + 1,
+                                _figureList[i].GetType().Name,
+                                "Radius = " + info[0], info[2]);
+                        }
+                        else if (_figureList[i].GetType().Name == "Triangle")
+                        {
+                            dataGridView.Rows.Add(i + 1,
+                                _figureList[i].GetType().Name,
+                                "Lenght = " + info[0] +
+                                "; Width = " + info[1], info[2]);
+                        }
+                        else if (_figureList[i].GetType().Name == "Rectangle")
+                        {
+                            dataGridView.Rows.Add(i + 1,
+                                _figureList[i].GetType().Name,
+                                "Lenght = " + info[0] +
+                                "; Width = " + info[1], info[2]);
+                        }
+                    }
+                }
             }              
         }
     }
