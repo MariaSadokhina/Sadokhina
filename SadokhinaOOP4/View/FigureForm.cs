@@ -334,6 +334,7 @@ namespace View
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
+                dataGridView.Rows.Clear();
                 string path = Environment.GetFolderPath(
                     Environment.SpecialFolder.MyDocuments);
                 openFileDialog.InitialDirectory = path;
